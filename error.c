@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void	error_exit(void)
+void	error_e(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-void	clean_exit(t_stack *stack_a, t_stack *stack_b)
+void	clean_e(t_stack *stack_a, t_stack *stack_b)
 {
 	free_stack(stack_a);
 	free_stack(stack_b);
-	error_exit();
+	error_e();
 }
 
 void	free_split(char **split)

@@ -47,7 +47,7 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size <= 5)
-		handle_small_stack(stack_a, stack_b);
+		small_stack(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
 }

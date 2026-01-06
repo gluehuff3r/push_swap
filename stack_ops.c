@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*create_and_init_stack(int capacity)
+t_stack	*create_stack(int capacity)
 {
 	t_stack	*stack;
 
@@ -31,7 +31,7 @@ t_stack	*create_and_init_stack(int capacity)
 	return (stack);
 }
 
-static int	is_valid_number_format(char *str, int *i, int *sign)
+static int	valid_format(char *str, int *i, int *sign)
 {
 	*i = 0;
 	*sign = 1;
@@ -59,7 +59,7 @@ int	is_number(char *str)
 	int		sign;
 	int		j;
 
-	if (!is_valid_number_format(str, &i, &sign))
+	if (!valid_format(str, &i, &sign))
 		return (0);
 	num = 0;
 	j = 0;

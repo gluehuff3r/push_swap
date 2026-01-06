@@ -23,15 +23,15 @@ static void	init_stacks(char **num, int count, t_stack **a, t_stack **b)
 	{
 		if (count == 1)
 			free_split(num);
-		error_exit();
+		error_e();
 	}
-	*a = create_and_init_stack(i);
-	*b = create_and_init_stack(i);
+	*a = create_stack(i);
+	*b = create_stack(i);
 	if (!*a || !*b)
 	{
 		if (count == 1)
 			free_split(num);
-		error_exit();
+		error_e();
 	}
 }
 
@@ -49,7 +49,7 @@ static void	fill_stack(char **num, int count, t_stack **a, t_stack **b)
 		{
 			if (count == 1)
 				free_split(num);
-			clean_exit(*a, *b);
+			clean_e(*a, *b);
 		}
 		(*a)->numbers[(*a)->size++] = ft_atoi(num[j]);
 		j++;
@@ -58,11 +58,11 @@ static void	fill_stack(char **num, int count, t_stack **a, t_stack **b)
 	{
 		if (count == 1)
 			free_split(num);
-		clean_exit(*a, *b);
+		clean_e(*a, *b);
 	}
 }
 
-static void	handle_single_argument(char *arg, t_stack **a, t_stack **b)
+static void	handle_single(char *arg, t_stack **a, t_stack **b)
 {
 	char	**num;
 	int		i;
@@ -73,17 +73,17 @@ static void	handle_single_argument(char *arg, t_stack **a, t_stack **b)
 	while (i > 0 && arg[i - 1] == ' ')
 		i--;
 	if (i == 0)
-		error_exit();
+		error_e();
 	arg[i] = '\0';
 	num =ft_split(arg, ' ');
 	if (!num)
-		error_exit();
+		error_e();
 	init_stacks(num, 1, a, b);
 	fill_stack(num, 1, a, b);
 	free_split(num);
 }
 
-static void	handle_multiple_arguments(int argc, char **argv, t_stack **a,
+static void	handle_multiple(int argc, char **argv, t_stack **a,
 		t_stack **b)
 {
 	init_stacks(argv, argc, a, b);
@@ -98,9 +98,9 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
-		handle_single_argument(argv[1], &stack_a, &stack_b);
+		handle_single(argv[1], &stack_a, &stack_b);
 	else
-		handle_multiple_arguments(argc, argv, &stack_a, &stack_b);
+		handle_multiple(argc, argv, &stack_a, &stack_b);
 	if (!is_sorted(stack_a))
 		sort_stack(stack_a, stack_b);
 	free_stack(stack_a);

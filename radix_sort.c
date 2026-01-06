@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_temp_array(int *temp, int size)
+void	sort_temp(int *temp, int size)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,7 @@ void	assign_ranks(int *arr, int *temp, int size)
 	}
 }
 
-void	normalize_array(int *arr, int size)
+void	index_array(int *arr, int size)
 {
 	int	*temp;
 	int	i;
@@ -72,7 +72,7 @@ void	normalize_array(int *arr, int size)
 		temp[i] = arr[i];
 		i++;
 	}
-	sort_temp_array(temp, size);
+	sort_temp(temp, size);
 	assign_ranks(arr, temp, size);
 	free(temp);
 }
@@ -106,7 +106,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 	int	size;
 	int	max_bits;
 
-	normalize_array(stack_a->numbers, stack_a->size);
+	index_array(stack_a->numbers, stack_a->size);
 	max_bits = get_max_bits(stack_a);
 	i = 0;
 	while (i < max_bits)

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_min_position(t_stack *stack)
+int	find_pos(t_stack *stack)
 {
 	int	i;
 	int	min;
@@ -66,7 +66,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_pos;
 
-	min_pos = find_min_position(stack_a);
+	min_pos = find_pos(stack_a);
 	if (min_pos == 1)
 		sa(stack_a, 1);
 	else if (min_pos == 2)
@@ -85,7 +85,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_pos;
 
-	min_pos = find_min_position(stack_a);
+	min_pos = find_pos(stack_a);
 	if (min_pos == 1)
 		sa(stack_a, 1);
 	else if (min_pos == 2)
@@ -105,7 +105,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	pa(stack_a, stack_b);
 }
 
-void	handle_small_stack(t_stack *stack_a, t_stack *stack_b)
+void	small_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size == 2 && stack_a->numbers[0] > stack_a->numbers[1])
 		sa(stack_a, 1);
